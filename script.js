@@ -10,49 +10,103 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
-
-// var signupbutton = document.getElementById('signupbtn');
-var form1 = document.getElementById('myform');
-form1.addEventListener('submit', () => {
-    return checkValidity();
-    
-});
-
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
 
-function checkValidity() {
-    var name=document.myform.name.value;  
-    var password=document.myform.password.value;
-    var emailtest = document.getElementById('email').value;
-    emailtest = '';
-    document.getElementById('email-error').innerText=""; 
+document.getElementById('newSignIn').onsubmit = function() {
+    return checkInput();
+}
 
-    console.log(name, password, emailtest);
+function checkInput() {
+    var inputEmail = document.getElementById('signin_email').value;
+    var inputPwd = document.getElementById('signin_pwd').value;
 
-    if(name.length == '' || password.length == '' || emailtest == ''){
-        document.querySelectorAll('.error').forEach(function(el){
-            el.style.display = 'block';
-            el.classList.add("block");
-        });
+    var errorMsg = '';
+
+    document.querySelectorAll('.signin_error').forEach(function(el){
+        el.classList.remove("signin_block");
+    });
+
+    if(inputEmail == '') {
+        errorMsg = 'Please enter an email address.';
+        document.getElementById('signin_email-error').innerText = errorMsg;
+        document.getElementById('signin_email-error').classList.add("signin_block");
+    } else if(inputEmail.length < 10) {
+        errorMsg = 'Email id is incorrect';
+        document.getElementById('signin_email-error').innerText = errorMsg;
+        document.getElementById('signin_email-error').classList.add("signin_block");
+    } else if(inputPwd == '') {
+        errorMsg = 'Please enter a password';
+        document.getElementById('signin_password-error').innerHTML = errorMsg;
+        document.getElementById('signin_password-error').classList.add("signin_block");
+    } else if(inputPwd.length < 8) {
+        errorMsg = 'Incorrect password';
+        document.getElementById('signin_password-error').innerHTML = errorMsg;
+        document.getElementById('signin_password-error').classList.add("signin_block");
+    } else {
+        errorMsg = '';
+        inputEmail.value = '';
+        inputPwd.value = '';
     }
 
-    if(name.length < 2 && name.length != ''){
-        document.getElementById('name-error').innerHTML = 'Name should contain atleast 2 letters';
-        document.getElementById('name-error').style.color = '#ff0000';
-        return false; 
-    }else if(password.length < 8 && password.length != ''){  
-        document.getElementById('password-error').innerHTML = 'Password should contain atleast 8 letters';
-        document.getElementById('password-error').style.color = '#ff0000';
-        return false;  
-    }else if (validateEmail(email)){
-        document.getElementById('email-error').innerText = 'Please enter a valid mail address'; 
-        document.getElementById('email-error').style.color = '#ff0000';
+    if(errorMsg != '') {
         return false;
-    }else{
+    } else {
         return true;
     }
-    
+}
+
+document.getElementById('signUpform').onsubmit = function() {
+    return checkInputSignUp();
+}
+
+function checkInputSignUp() {
+    var inputNmae = document.getElementById('signup_name').value;
+    var inputEmail = document.getElementById('signup_email').value;
+    var inputPwd = document.getElementById('signup_pwd').value;
+
+    var errMsg = '';
+
+    document.querySelectorAll('.error').forEach(function(el){
+        el.classList.remove("block");
+    });
+
+    if(inputNmae == '') {
+        errMsg = 'This field is required.';
+        document.getElementById('name-error').innerHTML = errMsg;
+        document.getElementById('name-error').classList.add("block");
+    } else if(inputNmae.length < 3) {
+        errMsg = 'Name should contain atleast 3 letters';
+        document.getElementById('name-error').innerHTML = errMsg;
+        document.getElementById('name-error').classList.add("block");
+    } else if(inputEmail == '') {
+        errMsg = 'This field is required.';
+        document.getElementById('email-error').innerText = errMsg;
+        document.getElementById('email-error').classList.add("block");
+    } else if(!validateEmail(inputEmail)) {
+        errMsg = 'Please enter a valid mail address';
+        document.getElementById('email-error').innerText = errMsg;
+        document.getElementById('email-error').classList.add("block");
+    } else if(inputPwd == '') {
+        errMsg = 'This field is required.';
+        document.getElementById('password-error').innerHTML = errMsg;
+        document.getElementById('password-error').classList.add("block");
+    } else if(inputPwd.length < 8) {
+        errMsg = 'Password should contain atleast 8 characters.';
+        document.getElementById('password-error').innerHTML = errMsg;
+        document.getElementById('password-error').classList.add("block");
+    } else {
+        errMsg = '';
+        document.getElementById('signup_name').value = '';
+        document.getElementById('signup_email').value = '';
+        document.getElementById('signup_pwd').value = '';
+    }
+
+    if(errMsg != '') {
+        return false;
+    } else {
+        return true;
+    }
 }

@@ -14,7 +14,7 @@
         <h2>Sign in/up Form</h2>
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form name="myform" id="myform" action="#" method="POST" novalidate>
+                <form id="signUpform" action="#">
                     <h1 id="account-heading">Create your Account</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -22,17 +22,17 @@
                         <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" name="name" required/>
+                    <input id="signup_name" type="text" placeholder="Name" name="name"/>
                     <span id="name-error" class="error" for="name">This field is required.</span>
-                    <input id="email" type="email" placeholder="Email" required/>
+                    <input id="signup_email" type="text" placeholder="Email"/>
                     <span id="email-error" class="error" for="email">This field is required.</span>
-                    <input type="password" placeholder="Password" name="password" required/>
+                    <input id="signup_pwd" type="password" placeholder="Password" name="password"/>
                     <span id="password-error" class="error" for="password">This field is required.</span>
-                    <button id="signupbtn" type='submit'>Sign Up</button>
+                    <button type='submit'>Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="#">
+                <form action="#" id="newSignIn">
                     <h1>Sign in</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -40,10 +40,12 @@
                         <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <input type="email" placeholder="Email" id="signin_email"/>
+                    <span id="signin_email-error" class="signin_error" for="email">This field is required.</span>
+                    <input type="password" placeholder="Password" id="signin_pwd" />
+                    <span id="signin_password-error" class="signin_error" for="password">This field is required.</span>
                     <a href="#">Forgot your password?</a>
-                    <button>Sign In</button>
+                    <button type="submit">Sign In</button>
                 </form>
             </div>
             <div class="overlay-container">
