@@ -9,8 +9,9 @@ body {
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
+	min-height: 100vh;
+	margin: 0;
+	padding: 20px;
 }
 
 h1 {
@@ -312,6 +313,7 @@ input {
   @media only screen and (max-width: 567px){
 	  	body{
 			  margin: 0 10px;
+			  padding: 0;
 		}
 		.overlay-container{
 			display: none;
@@ -337,4 +339,14 @@ input {
 			transform: translateX(100%);
 			opacity: 1;
 		}
+		.sign-in-container{
+			transform: translateX(-100%);
+			/* opacity: 1; */
+		}
+		.mobile-sign-up-active{
+			transform: translateX(0);
+		}
+		.mobile-sign-in-active{
+			transform: translateX(0);
+		}	
 	}

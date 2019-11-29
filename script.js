@@ -1,6 +1,8 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
+document.getElementById('mobile-sign-in').classList.add('mobile-sign-in-active');
+
 
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
@@ -11,13 +13,15 @@ signInButton.addEventListener('click', () => {
 });
 
 document.getElementById('mobile-sign-up').addEventListener('click', () => {
-    document.querySelector('.sign-up-container').style.transform = 'translateX(0)';
-    document.querySelector('.sign-in-container').style.transform = 'translateX(-100%)';
+    document.getElementById('mobile-sign-in').classList.remove('mobile-sign-in-active');
+    document.getElementById('mobile-sign-up').classList.add('mobile-sign-up-active');
+    container.classList.remove("right-panel-active");
 });
 
 document.getElementById('mobile-sign-in').addEventListener('click', () => {
-    document.querySelector('.sign-up-container').style.transform = 'translateX(100%)';
-    document.querySelector('.sign-in-container').style.transform = 'translateX(0)';
+    document.getElementById('mobile-sign-in').classList.add('mobile-sign-in-active');
+    document.getElementById('mobile-sign-up').classList.remove('mobile-sign-up-active');
+    container.classList.add("right-panel-active");
 });
 
 function validateEmail(email) {
