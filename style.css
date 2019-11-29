@@ -71,6 +71,14 @@ button.ghost {
 	border-color: #FFFFFF;
 }
 
+#mobile-sign-up{
+	display: none;
+}
+
+#mobile-sign-in{
+	display: none;
+}
+
 form {
 	background-color: #FFFFFF;
 	display: flex;
@@ -299,3 +307,34 @@ input {
 	  transform: translate3d(10px, 0, 0);
 	}
   }
+
+  /* Media queries for mobile */
+  @media only screen and (max-width: 567px){
+	  	body{
+			  margin: 0 10px;
+		}
+		.overlay-container{
+			display: none;
+		}
+		.form-container{
+			width: 100%;
+		}
+		#mobile-sign-up{
+			display: block;
+			color: blue;
+			font-size: 12px;
+			text-align: center;
+			margin-top: -50px;
+		}
+		#mobile-sign-in{
+			display: block;
+			color: blue;
+			font-size: 12px;
+			text-align: center;
+			margin-top: -50px;
+		}
+		.sign-up-container{
+			transform: translateX(100%);
+			opacity: 1;
+		}
+	}

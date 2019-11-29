@@ -10,6 +10,16 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
+document.getElementById('mobile-sign-up').addEventListener('click', () => {
+    document.querySelector('.sign-up-container').style.transform = 'translateX(0)';
+    document.querySelector('.sign-in-container').style.transform = 'translateX(-100%)';
+});
+
+document.getElementById('mobile-sign-in').addEventListener('click', () => {
+    document.querySelector('.sign-up-container').style.transform = 'translateX(100%)';
+    document.querySelector('.sign-in-container').style.transform = 'translateX(0)';
+});
+
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
