@@ -1,27 +1,31 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
-document.getElementById('mobile-sign-in').classList.add('mobile-sign-in-active');
+document.getElementsByClassName('sign-in-container')[0].classList.add('mobile-sign-in-active');
 
 
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
+    document.getElementsByClassName('sign-in-container')[0].classList.remove('mobile-sign-in-active');
+    document.getElementsByClassName('sign-up-container')[0].classList.add('mobile-sign-up-active');
 });
 
 signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
+    container.classList.remove("right-panel-active");
+    document.getElementsByClassName('sign-in-container')[0].classList.add('mobile-sign-in-active');
+    document.getElementsByClassName('sign-up-container')[0].classList.remove('mobile-sign-up-active');
 });
 
 document.getElementById('mobile-sign-up').addEventListener('click', () => {
-    document.getElementById('mobile-sign-in').classList.remove('mobile-sign-in-active');
-    document.getElementById('mobile-sign-up').classList.add('mobile-sign-up-active');
-    container.classList.remove("right-panel-active");
+    document.getElementsByClassName('sign-in-container')[0].classList.remove('mobile-sign-in-active');
+    document.getElementsByClassName('sign-up-container')[0].classList.add('mobile-sign-up-active');
+    container.classList.add("right-panel-active");
 });
 
 document.getElementById('mobile-sign-in').addEventListener('click', () => {
-    document.getElementById('mobile-sign-in').classList.add('mobile-sign-in-active');
-    document.getElementById('mobile-sign-up').classList.remove('mobile-sign-up-active');
-    container.classList.add("right-panel-active");
+    document.getElementsByClassName('sign-in-container')[0].classList.add('mobile-sign-in-active');
+    document.getElementsByClassName('sign-up-container')[0].classList.remove('mobile-sign-up-active');
+    container.classList.remove("right-panel-active");
 });
 
 function validateEmail(email) {
